@@ -1,0 +1,7 @@
+<h1>Liste des Mangas</h1>
+
+@if (mangaList$ | async; as mangaList) { @for (manga of mangaList; track $index)
+{
+<app-manga [manga]="manga" />
+
+} }
