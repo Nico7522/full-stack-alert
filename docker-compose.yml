@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    env_file:
+      - "./database.env"
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./chapter-alert-back/db-data:/var/lib/postgresql/data
+      - ./chapter-alert-back/sql:/docker-entrypoint-initdb.d
+    container_name: db
+
+  app:
+    build:
+      context: ./chapter-alert-back
+    env_file:
+      - "./chapter-alert-back/.env"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./chapter-alert-back:/usr/src/app
+    depends_on:
+      - db
+    container_name: api
+
+  bot:
+    build:
+      context: C:\Users\nicod\Desktop\PupNode
+    env_file:
+      - C:\Users\nicod\Desktop\PupNode\.env
+    container_name: bot
+    depends_on:
+      - app
+
+  front:
+    build:
+      context: ./chapter-alert-front
+    volumes:
+      - .\chapter-alert-front:/app
+      - /app/node_modules
+    ports:
+      - "4200:4200"
+
+volumes:
+  db-data:

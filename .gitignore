@@ -1,0 +1,5 @@
+database.env
+./chapter-alert-back/.env
+./chapter-alert-back/node_modules
+./chapter-alert-front/.env
+./chapter-alert-front/node_modules
