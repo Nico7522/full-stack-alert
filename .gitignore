@@ -1,4 +1,6 @@
 database.env
 ./chapter-alert-back/.env
+./chapter-alert-back/src/db.ts
+
 ./chapter-alert-back/node_modules
 ./chapter-alert-front/node_modules
